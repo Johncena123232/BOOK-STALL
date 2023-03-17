@@ -47,21 +47,20 @@ function getFromweb() {
 
 //delete function
 
-function DeleteItem(itemId) {
-  let Element = document.getElementById(itemId);
-  containerList.removeChild(Element);
+function DeleteItem(todoId) {
+  let todoElement = document.getElementById(todoId);
+  containerList.removeChild(todoElement);
 
-  let items = totalList;
-  for (var i = 0; i < items.length; i++) {
-    var item = JSON.parse(items[i]);
-    if (item.uniqueNo == itemId) {
-      totalList.slice(item, 1);
-      delete item;
+  let deleteElementIndex = totalList.findIndex(function (eachTodo) {
+    let eachTodoId = eachTodo.uniqueNo;
+    if (eachTodoId === todoId) {
+      return true;
+    } else {
+      return false;
     }
-  }
+  });
 
-  items = JSON.stringify(items);
-  localStorage.setItem("List", JSON.stringify(items));
+  totalList.splice(deleteElementIndex, 1);
 }
 
 //add and append to web and storage
