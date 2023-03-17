@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+#loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginwrapper{
+    position: relative;
+    top:2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.addNew{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 2rem 1rem;
+    font-size: 1.4rem;
+    font-weight: 100;
+}
+#imgSelect{
+    margin:2rem 0rem 1rem 5rem;
+    text-align: center;
+}
+
+#AddButton{
+    width:12rem;
+}
+
+.row{
+
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 18rem;
+    margin:1rem 1.5rem;
+    padding:0 1rem;
+   
+}
+#delete{
+    position: absolute;
+    right:1rem;
+    color:rgb(252, 173, 16);
+}
+.card-img-top{
+    margin:2.2rem 1rem 0 0;
+    width:10rem;
+    height:15rem;
+}
+
+li{
+    text-decoration: none;
+    list-style: none;
+}
+
+.delete-icon{
+    width: 1rem;
+}
