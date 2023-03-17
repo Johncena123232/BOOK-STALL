@@ -61,6 +61,8 @@ function DeleteItem(todoId) {
   });
 
   totalList.splice(deleteElementIndex, 1);
+  localStorage.setItem("List", JSON.stringify(totalList));
+  
 }
 
 //add and append to web and storage
