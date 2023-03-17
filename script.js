@@ -1,6 +1,21 @@
 let buttonSave = document.getElementById("AddButton");
 let containerList = document.getElementById("row1");
 
+//logincheckaccess
+let Role = "user";
+let Loginbutton = document.getElementById("buttonClick");
+
+
+function clickedLogin() {
+  let UserName = document.getElementById("user").value;
+  let Pass = document.getElementById("pass").value;
+  if(UserName=="admin" && Pass=="12345") Role="admin";
+  else Role = "user";
+  console.log(Role);
+};
+
+
+
 function lSaccess() {
   let toString = localStorage.getItem("List");
   let toJason = JSON.parse(toString);
@@ -15,14 +30,14 @@ let totalList = lSaccess();
 let ListCount = totalList.length;
 
 buttonSave.onclick = function () {
-  getFromweb();
+  getFromweb(Role);
   localStorage.setItem("List", JSON.stringify(totalList));
 };
 
-function getFromweb() {
+function getFromweb(role) {
   let userBookName = document.getElementById("bookName").value;
   let userBookPrice = document.getElementById("bookPrice").value;
-  let userBookPic = document.getElementById("imgSelect").value;
+  let userBookPic = document.getElementById("imgSelect").value[0];
 
   if (userBookName === "" || userBookPrice === "") {
     alert("Enter Valid Info");
@@ -36,6 +51,7 @@ function getFromweb() {
     price: userBookPrice,
     img: userBookPic,
     uniqueNo: ListCount,
+    roles:role,
   };
 
   totalList.push(newItem);
@@ -47,22 +63,21 @@ function getFromweb() {
 
 //delete function
 
-function DeleteItem(todoId) {
-  let todoElement = document.getElementById(todoId);
+function DeleteItem(Id) {
+  let todoElement = document.getElementById(Id);
   containerList.removeChild(todoElement);
 
-  let deleteElementIndex = totalList.findIndex(function (eachTodo) {
-    let eachTodoId = eachTodo.uniqueNo;
-    if (eachTodoId === todoId) {
+  let deleteIndex = totalList.findIndex(function (item) {
+    let itemId = item.uniqueNo;
+    if (itemId === Id) {
       return true;
     } else {
       return false;
     }
   });
 
-  totalList.splice(deleteElementIndex, 1);
+  totalList.splice(deleteIndex, 1);
   localStorage.setItem("List", JSON.stringify(totalList));
-  
 }
 
 //add and append to web and storage
@@ -72,6 +87,7 @@ function createItem(item) {
   let LName = item.name;
   let Price = item.price;
   let Img = item.img;
+  let Roles = item.roles;
   let Element = document.createElement("div");
   Element.classList.add("card");
   Element.id = ListId;
@@ -84,6 +100,9 @@ function createItem(item) {
   deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
   deleteIcon.id = "Deleted";
   deleteIcon.style.cursor = "Pointer";
+  // if(Roles==="user") deleteIcon.style.display = "none";
+
+
 
   let CardBody = document.createElement("div");
   ImageIcon.classList.add("card-body");
@@ -112,6 +131,9 @@ function createItem(item) {
     DeleteItem(ListId);
   };
 }
+let addnewDiv = document.getElementById("addNew");
+let DeleteDiv = document.getElementById("Deleted");
+
 
 for (let items of totalList) {
   createItem(items);

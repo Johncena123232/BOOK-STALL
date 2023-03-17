@@ -4,6 +4,7 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: rgba(216, 235, 229, 0.553);
 }
 
 .container{
@@ -78,4 +79,30 @@ li{
 
 .delete-icon{
     width: 1rem;
+}
+
+
+.loginPage{
+    position: relative;
+    text-align: center;
+    width:90vw;
+    height: 90vh;
+    margin:auto;
+}
+
+.loginPage input{
+    padding:1rem;
+    margin:1rem;
+}
+
+.loginPage button{
+    padding:1rem;
+    margin:1rem;
+}
+
+#formPage{
+    position: relative;
+    top:30%;
+    align-items: center;
+    justify-content: center;
 }

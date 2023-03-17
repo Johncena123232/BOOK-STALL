@@ -5,15 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="loginPage">
-        <form action="#">
+        <form action="./index.html" id="formPage">
+            <h2>LOGIN FORM</h2>
             <input id="user" type="text" required placeholder="Enter UserName">
             <input id="pass" type="password" required placeholder="Enter Pass">
-            <button id="buttonClick">LOGIN</button>
+            <button id="buttonClick" onclick="clickedLogin();">LOGIN</button>
         </form>
     </div>
 </body>
-<script type="text/javascript" src="./logincheck.js"></script>
+<script type="text/javascript" src="./script.js"></script>
 </html>

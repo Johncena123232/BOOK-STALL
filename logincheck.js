@@ -1,11 +1,7 @@
-let Role = "user";
+// let Role = "user";
+// let Loginbutton = document.getElementById("buttonClick");
 
-let UserName = document.getElementById("user").value;
-let Pass = document.getElementById("pass").value;
-
-let Loginbutton = document.getElementById("buttonClick");
-
-Loginbutton.onclick = function (e) {
-  console.log(UserName);
-  console.log(Pass);
-};
+// Loginbutton.onclick = function (e) {
+//   let UserName = document.getElementById("user").value;
+//   let Pass = document.getElementById("pass").value;
+// };
