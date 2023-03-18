@@ -1,9 +1,8 @@
 let buttonSave = document.getElementById("AddButton");
 let containerList = document.getElementById("row1");
 
-//logincheckaccess
+// get Role
 let Role = localStorage.getItem("Role");
-console.log(Role)
 
 //admin view
 let addnewBookDiv = document.getElementById("addNewBook");
@@ -125,4 +124,9 @@ function createItem(item) {
 
 for (let items of totalList) {
   createItem(items);
+}
+
+//logout
+function logout () {
+  localStorage.setItem("Role", "user")
 }
