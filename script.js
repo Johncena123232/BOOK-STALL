@@ -1,16 +1,21 @@
 let buttonAdd = document.getElementById("AddButton");
 let containerList = document.getElementById("row1");
+let addnewDiv = document.getElementById("addNew");
 
 //logincheckaccess
 let Role = "user";
 let Loginbutton = document.getElementById("buttonClick");
+
+// if (localStorage.getItem("rol") == "admin") addnewDiv.style.display = "block";
+// else addnewDiv.style.display = "none";
 
 function clickedLogin() {
   let UserName = document.getElementById("user").value;
   let Pass = document.getElementById("pass").value;
   if (UserName == "admin" && Pass == "12345") Role = "admin";
   else Role = "user";
-  console.log(Role);
+  localStorage.setItem("rol", Role);
+  window.location.href = "./index.html";
 }
 
 function lSaccess() {
@@ -27,11 +32,11 @@ let totalList = lSaccess();
 let ListCount = totalList.length;
 
 buttonAdd.onclick = function () {
-  getFromweb(Role);
+  getFromweb();
   localStorage.setItem("List", JSON.stringify(totalList));
 };
 
-function getFromweb(role) {
+function getFromweb() {
   let userBookName = document.getElementById("bookName").value;
   let userBookPrice = document.getElementById("bookPrice").value;
   let userBookPic = document.getElementById("imgSelect").value[0];
@@ -48,7 +53,6 @@ function getFromweb(role) {
     price: userBookPrice,
     img: userBookPic,
     uniqueNo: ListCount,
-    roles: role,
   };
 
   totalList.push(newItem);
@@ -84,7 +88,6 @@ function createItem(item) {
   let LName = item.name;
   let Price = item.price;
   let Img = item.img;
-  let Roles = item.roles;
   let Element = document.createElement("div");
   Element.classList.add("card");
   Element.id = ListId;
@@ -97,7 +100,8 @@ function createItem(item) {
   deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
   deleteIcon.id = "Deleted";
   deleteIcon.style.cursor = "Pointer";
-  // if(Roles==="user") deleteIcon.style.display = "none";
+  let Roles = localStorage.getItem("rol");
+  if (Roles === "user") deleteIcon.style.display = "none";
 
   let CardBody = document.createElement("div");
   ImageIcon.classList.add("card-body");
@@ -126,8 +130,7 @@ function createItem(item) {
     DeleteItem(ListId);
   };
 }
-let addnewDiv = document.getElementById("addNew");
-let DeleteDiv = document.getElementById("Deleted");
+
 
 for (let items of totalList) {
   createItem(items);
