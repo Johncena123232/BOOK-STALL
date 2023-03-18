@@ -6,8 +6,7 @@ let addnewDiv = document.getElementById("addNew");
 let Role = "user";
 let Loginbutton = document.getElementById("buttonClick");
 
-// if (localStorage.getItem("rol") == "admin") addnewDiv.style.display = "block";
-// else addnewDiv.style.display = "none";
+
 
 function clickedLogin() {
   let UserName = document.getElementById("user").value;
@@ -39,7 +38,7 @@ buttonAdd.onclick = function () {
 function getFromweb() {
   let userBookName = document.getElementById("bookName").value;
   let userBookPrice = document.getElementById("bookPrice").value;
-  let userBookPic = document.getElementById("imgSelect").value[0];
+  let userBookPic = document.getElementById("imgSelect").value;
 
   if (userBookName === "" || userBookPrice === "") {
     alert("Enter Valid Info");
