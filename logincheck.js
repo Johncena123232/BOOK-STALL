@@ -1,7 +1,16 @@
-// let Role = "user";
-// let Loginbutton = document.getElementById("buttonClick");
+const adminProfile = {
+  username : "admin",
+  password : "1234"
+}
 
-// Loginbutton.onclick = function (e) {
-//   let UserName = document.getElementById("user").value;
-//   let Pass = document.getElementById("pass").value;
-// };
+function clickedLogin() {
+  let UserName = document.getElementById("user").value;
+  let Pass = document.getElementById("pass").value;
+
+  //check credentials
+  if(UserName===adminProfile.username && Pass===adminProfile.password) Role="admin"
+  else Role = "user";
+
+  //set Role
+  localStorage.setItem("Role", Role);
+};

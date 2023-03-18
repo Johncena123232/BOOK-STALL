@@ -2,19 +2,14 @@ let buttonSave = document.getElementById("AddButton");
 let containerList = document.getElementById("row1");
 
 //logincheckaccess
-let Role = "user";
-let Loginbutton = document.getElementById("buttonClick");
+let Role = localStorage.getItem("Role");
+console.log(Role)
 
-
-function clickedLogin() {
-  let UserName = document.getElementById("user").value;
-  let Pass = document.getElementById("pass").value;
-  if(UserName=="admin" && Pass=="12345") Role="admin";
-  else Role = "user";
-  console.log(Role);
-};
-
-
+//admin view
+let addnewBookDiv = document.getElementById("addNewBook");
+if (Role==="admin") {
+  addnewBookDiv.style.display="inline"
+}
 
 function lSaccess() {
   let toString = localStorage.getItem("List");
@@ -29,7 +24,7 @@ function lSaccess() {
 let totalList = lSaccess();
 let ListCount = totalList.length;
 
-buttonSave.onclick = function () {
+buttonSave.onclick = function (e) {
   getFromweb(Role);
   localStorage.setItem("List", JSON.stringify(totalList));
 };
@@ -62,7 +57,6 @@ function getFromweb(role) {
 }
 
 //delete function
-
 function DeleteItem(Id) {
   let todoElement = document.getElementById(Id);
   containerList.removeChild(todoElement);
@@ -81,7 +75,6 @@ function DeleteItem(Id) {
 }
 
 //add and append to web and storage
-
 function createItem(item) {
   let ListId = item.uniqueNo;
   let LName = item.name;
@@ -98,11 +91,9 @@ function createItem(item) {
 
   let deleteIcon = document.createElement("i");
   deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
-  deleteIcon.id = "Deleted";
   deleteIcon.style.cursor = "Pointer";
-  // if(Roles==="user") deleteIcon.style.display = "none";
-
-
+  deleteIcon.style.display = "none";
+  if(Role==="admin") deleteIcon.style.display = "block";
 
   let CardBody = document.createElement("div");
   ImageIcon.classList.add("card-body");
@@ -131,9 +122,6 @@ function createItem(item) {
     DeleteItem(ListId);
   };
 }
-let addnewDiv = document.getElementById("addNew");
-let DeleteDiv = document.getElementById("Deleted");
-
 
 for (let items of totalList) {
   createItem(items);
